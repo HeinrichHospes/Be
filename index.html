@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Binäre Suchbäume – interaktive Arbeitsblätter</title>
+<style>
+:root{--bg:#fff;--fg:#1d2433;--mut:#5b6577;--card:#f2f5fa;--bd:#ccd3e0;--ac:#2b59c3;--ok:#1e8a4c;--no:#c0392b;--nd:#ffe27a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171f;--fg:#e8ebf2;--mut:#9aa4b8;--card:#1d222d;--bd:#363e50;--ac:#7fa4ff;--ok:#4cc784;--no:#ff7b6b}}
+:root[data-theme="dark"]{--bg:#14171f;--fg:#e8ebf2;--mut:#9aa4b8;--card:#1d222d;--bd:#363e50;--ac:#7fa4ff;--ok:#4cc784;--no:#ff7b6b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:.2em 0}h2{font-size:1.15rem;margin:.6em 0 .3em}
+.m{color:var(--mut);font-size:.9rem}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+button,select,input,textarea{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:6px 10px}
+button{cursor:pointer}button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+textarea{width:100%;box-sizing:border-box;min-height:70px}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 12px;margin:10px 0}
+.sc{overflow-x:auto;padding:6px 0}
+.nd{cursor:pointer}.nd rect{fill:var(--nd);stroke:#b8962b}.nd text{fill:#1d2433;font-size:13px;text-anchor:middle}
+.nd:hover rect{stroke:var(--ac);stroke-width:2}
+.ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}
+.ln{font:14px/1.6 ui-monospace,Menlo,Consolas,monospace;white-space:pre;padding:0 6px;border-radius:4px;cursor:pointer}
+.ln.sel{background:var(--ac);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px}
+.br{border:1px solid var(--fg);margin:0}
+.cd{padding:6px;text-align:center;border-bottom:1px solid var(--fg);background:var(--card)}
+.cols{display:flex}.col{flex:1;padding:6px;border-right:1px solid var(--fg);min-width:0}.col:last-child{border:0}
+.hd{border:1px solid var(--fg);border-bottom:0;padding:6px;font-weight:600}
+.sg select{width:100%;max-width:100%;font-size:.85rem}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--bd);padding:6px;text-align:left}
+td input{width:5.5em}
+</style></head><body><main>
+<h1>Binäre Suchbäume – interaktive Arbeitsblätter</h1>
+<p class="m">Digitale Fassung der ABs IF Q KLN 03–06 (Texte und Beispiele nach Schöningh: Informatik, Westermann 2015). Alles läuft im Browser, Eingaben werden nicht gespeichert.</p>
+<nav id="tabs"></nav>
+
+<section id="s3"><h2>03 · Knoten aus einem Suchbaum entfernen</h2>
+<p>Drei Fälle: <b>Blatt</b> → einfach entfernen. <b>Nur ein Teilbaum</b> → dessen Wurzel rückt auf. <b>Zwei Teilbäume</b> → das Maximum des linken (oder das Minimum des rechten) Teilbaums ersetzt den Knoten; der alte Platz dieses Knotens wird nach den ersten beiden Regeln entfernt.</p>
+<p><b>Aufgabe a)</b> Geben Sie den Baum an, der entsteht, wenn die Knoten 5 und 23 gelöscht werden. Klicken Sie auf den Knoten, der gelöscht werden soll.</p>
+<label>Ersatz bei zwei Teilbäumen: <select id="var"><option value="l">Maximum links</option><option value="r">Minimum rechts</option></select></label>
+<button id="undo">Rückgängig</button> <button id="rst">Zurücksetzen</button>
+<div class="sc" id="t3"></div><div id="res" class="ok"></div><div id="log" class="card"></div></section>
+
+<section id="s4"><h2>04 · Binäre Suchbäume erkennen</h2>
+<p>Entscheiden Sie bei jedem Baum begründet, ob es ein binärer Suchbaum ist. Danach können Sie Ihre Begründung vergleichen.</p>
+<div class="grid" id="g4"></div></section>
+
+<section id="s5"><h2>05 · Algorithmus zum Einfügen eines neuen Profils</h2>
+<p>Ein neues Profil <i>mia89</i> wird in den Baum (gerd44 → pia96 → max62 → michel93) eingefügt. Wählen Sie eine Operation und klicken Sie die Zeilen des Pseudocodes an, die dabei ausgeführt werden.</p>
+<div id="ops" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+<div class="card" id="code"></div>
+<button id="chk5">Prüfen</button> <button id="sol5">Lösung zeigen</button> <button id="clr5">Auswahl leeren</button>
+<p id="f5"></p></section>
+
+<section id="s6"><h2>06 · In binären Suchbäumen suchen</h2>
+<p><b>1) Struktogramm.</b> Ergänzen Sie das Struktogramm der rekursiven Methode <i>suche</i> (das ist die Tippkarte 06). Wählen Sie für jedes Feld die passende Bedingung bzw. Anweisung.</p>
+<div class="sg" id="sg"></div>
+<p><button id="chk6">Prüfen</button> <span id="f6"></span></p>
+<p><b>2) Gegeben ist ein vollständiger binärer Suchbaum.</b></p>
+<div class="sc" id="t6"></div>
+<p><b>a)</b> Tiefe des Baumes (Wurzel hat Tiefe 0): <input id="dep" type="number"> </p>
+<p><b>b)</b> Anzahl der Suchschritte (maximal im vollständigen Suchbaum, durchschnittlich in der linearen Liste):</p>
+<table><tr><th>Elemente</th><th>max. Schritte Suchbaum</th><th>Ø Schritte lineare Liste</th></tr>
+<tr><td>15</td><td>4</td><td>7,5</td></tr>
+<tr><td>31</td><td><input id="b31"></td><td><input id="l31"></td></tr>
+<tr><td>63</td><td><input id="b63"></td><td><input id="l63"></td></tr></table>
+<p><button id="chk2">Prüfen (a und b)</button> <span id="f2"></span></p>
+<p><b>c)</b> Ziehen Sie Rückschlüsse für den Einsatz von linearer Liste und binärem Suchbaum.</p><textarea></textarea>
+<details><summary>Musterlösung c)</summary><p>Im vollständigen Suchbaum wächst der Aufwand nur um einen Schritt, wenn sich die Datenmenge verdoppelt (logarithmisch), in der Liste verdoppelt er sich mit (linear). Bei vielen Daten und häufigem Suchen lohnt der Suchbaum. Er ist aber nur dann schnell, wenn er einigermaßen ausgeglichen ist; ein entarteter Baum (z. B. Kette) ist so langsam wie eine Liste. Für wenige Daten ist die einfachere Liste ausreichend.</p></details>
+<p><b>d)</b> Vergleichen Sie das Suchen im Suchbaum mit der binären Suche im Array.</p><textarea></textarea>
+<details><summary>Musterlösung d)</summary><table>
+<tr><th></th><th>Suchbaum</th><th>Binäre Suche im Array</th></tr>
+<tr><td>Voraussetzung</td><td>Ordnung steckt in der Baumstruktur</td><td>Array muss sortiert sein</td></tr>
+<tr><td>Suchaufwand</td><td>höchstens Tiefe + 1 Vergleiche, nur bei ausgeglichenem Baum ca. log₂ n</td><td>immer ca. log₂ n</td></tr>
+<tr><td>Einfügen/Löschen</td><td>Zeiger umhängen, nichts verschieben</td><td>Elemente verschieben, aufwendig</td></tr>
+<tr><td>Speicher</td><td>dynamisch, zusätzlich Zeiger</td><td>kompakt, feste Größe</td></tr></table></details></section>
+
+<script>
+const $=s=>document.querySelector(s),esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const N=(k,l,r)=>({k,c:[l||null,r||null]});
+const keys=t=>t?[...keys(t.c[0]),t.k,...keys(t.c[1])]:[];
+function draw(t){
+ if(!t)return'<p class="m">(leerer Baum)</p>';
+ let i=0,mx=0,ns=[],bw=30;
+ (function f(n,d){const h=Math.floor(n.c.length/2);n.c.slice(0,h).forEach(x=>x&&f(x,d+1));n.x=i++;n.d=d;ns.push(n);mx=Math.max(mx,d);bw=Math.max(bw,String(n.k).length*8+16);n.c.slice(h).forEach(x=>x&&f(x,d+1))})(t,0);
+ const dx=bw+8,W=i*dx+8,H=(mx+1)*54,X=n=>n.x*dx+bw/2+4,Y=n=>n.d*54+18;let e='',g='';
+ ns.forEach(n=>n.c.forEach(c=>{if(c)e+=`<line x1="${X(n)}" y1="${Y(n)}" x2="${X(c)}" y2="${Y(c)}" stroke="var(--mut)"/>`}));
+ ns.forEach(n=>g+=`<g class="nd" data-k="${n.k}"><rect x="${X(n)-bw/2}" y="${Y(n)-13}" width="${bw}" height="26" rx="13"/><text x="${X(n)}" y="${Y(n)+4}">${n.k}</text></g>`);
+ return`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="max-width:none">${e+g}</svg>`}
+
+/* 03 */
+const base=()=>N(17,N(10,N(5,N(4,N(3))),N(11)),N(23,N(19,N(18),N(21,N(20),N(22))),N(42)));
+let T,Hs=[],LG=[];
+function del(t,k){
+ if(!t)return t;
+ if(k<t.k){t.c[0]=del(t.c[0],k);return t}
+ if(k>t.k){t.c[1]=del(t.c[1],k);return t}
+ const[l,r]=t.c;
+ if(!l&&!r){LG.push(`<b>${k}</b> ist ein Blatt → wird einfach entfernt.`);return null}
+ if(!l||!r){LG.push(`<b>${k}</b> hat nur einen Teilbaum → dessen Wurzel <b>${(l||r).k}</b> rückt auf.`);return l||r}
+ if($('#var').value==='l'){let m=l;while(m.c[1])m=m.c[1];LG.push(`<b>${k}</b> hat zwei Teilbäume → das Maximum des linken Teilbaums (<b>${m.k}</b>) ersetzt ihn, der alte Knoten ${m.k} wird entfernt.`);t.k=m.k;t.c[0]=del(l,m.k)}
+ else{let m=r;while(m.c[0])m=m.c[0];LG.push(`<b>${k}</b> hat zwei Teilbäume → das Minimum des rechten Teilbaums (<b>${m.k}</b>) ersetzt ihn, der alte Knoten ${m.k} wird entfernt.`);t.k=m.k;t.c[1]=del(r,m.k)}
+ return t}
+function r3(){
+ $('#t3').innerHTML=draw(T);
+ $('#log').innerHTML=LG.map(x=>'<div>'+x+'</div>').join('')||'<span class="m">Noch nichts gelöscht.</span>';
+ const a=keys(T).join(),b=keys(base()).filter(k=>k!=5&&k!=23).join();
+ $('#res').textContent=a===b?'✓ Aufgabe a) gelöst: 5 und 23 sind entfernt, die Suchbaum-Eigenschaft bleibt erhalten.':''}
+$('#t3').onclick=e=>{const g=e.target.closest('.nd');if(!g)return;Hs.push([JSON.stringify(T),[...LG]]);T=del(T,+g.dataset.k);r3()};
+$('#undo').onclick=()=>{if(Hs.length){const[a,b]=Hs.pop();T=JSON.parse(a);LG=b;r3()}};
+$('#rst').onclick=()=>{T=base();Hs=[];LG=[];r3()};
+$('#rst').click();
+
+/* 04 */
+const T4=[
+ ['a)',N(22,N(15,N(-4),N(5)),{k:33,c:[N(32),N(33),N(34)]}),0,'Kein Suchbaum: Der Knoten 33 hat drei Nachfolger (kein Binärbaum). Außerdem steht 5 rechts von 15, obwohl 5 &lt; 15 ist, und 33 kommt doppelt vor.'],
+ ['b)',N(9,N(0,null,N(7,N(3,N(2,N(1))))),N(13)),1,'Suchbaum: Alles links von 9 ist kleiner (0, 7, 3, 2, 1), 7 steht zu Recht rechts von 0, 3 &lt; 7 links usw. Der Baum ist nur unausgeglichen, aber gültig.'],
+ ['c)',N('26.03.2001',N('05.06.2000',null,N('24.12.2000')),N('02.10.2001',N('05.10.2001'))),0,'Kein Suchbaum: 05.10.2001 steht links von 02.10.2001, ist aber später (größer) und müsste rechts stehen.'],
+ ['d)',N('implementieren',null,N('implodieren',null,N('imponieren',null,N('imprägnieren',null,N('improvisieren'))))),1,'Suchbaum: Jeder rechte Nachfolger ist lexikografisch größer (impl-e &lt; impl-o &lt; impo &lt; impr-ä &lt; impr-o). Entarteter Baum, aber gültig.']];
+$('#g4').innerHTML=T4.map((t,i)=>`<div class="card"><b>${t[0]}</b><div class="sc">${draw(t[1])}</div><button data-i="${i}" data-v="1">Suchbaum</button> <button data-i="${i}" data-v="0">kein Suchbaum</button><p class="a" id="a4${i}"></p></div>`).join('');
+$('#g4').onclick=e=>{const b=e.target.closest('button');if(!b)return;const t=T4[+b.dataset.i];$('#a4'+b.dataset.i).innerHTML=`<span class="${+b.dataset.v===t[2]?'ok':'no'}">${+b.dataset.v===t[2]?'✓ Richtig.':'✗ Nicht ganz.'}</span> ${t[3]}`};
+
+/* 05 */
+const LN=['Inhalt einfuegen (Inhalt neuerInhalt)','falls (neuerInhalt != null) dann','  falls (baum leer) dann','    fülle den baum mit neuerInhalt','  sonst','    falls (neuerInhalt < wurzelinhalt) dann','      linkerTeilbaum.einfuegen(neuerInhalt)','    sonst','      falls (neuerInhalt > wurzelinhalt) dann','        rechterTeilbaum.einfuegen(neuerInhalt)','      ende falls','    ende falls','  ende falls','ende falls'];
+const OPS={A:'mia89 > gerd44',B:'mia89 < pia96',C:'mia89 > max62',D:'mia89 < michel93 (linker Teilbaum leer)'};
+const REQ={A:[6,8,9,10],B:[6,7],C:[6,8,9,10],D:[4,6,7]};
+let cur='A';const S={A:new Set,B:new Set,C:new Set,D:new Set};
+function r5(){
+ $('#ops').innerHTML=Object.keys(OPS).map(o=>`<button class="${o==cur?'on':''}" data-o="${o}">${o}: ${OPS[o]}</button>`).join('');
+ $('#code').innerHTML=LN.map((t,i)=>`<div class="ln ${S[cur].has(i+1)?'sel':''}" data-n="${i+1}">${String(i+1).padStart(2)}  ${esc(t)}</div>`).join('')}
+$('#ops').onclick=e=>{const b=e.target.closest('button');if(b){cur=b.dataset.o;$('#f5').textContent='';r5()}};
+$('#code').onclick=e=>{const l=e.target.closest('.ln');if(!l)return;const n=+l.dataset.n;S[cur].has(n)?S[cur].delete(n):S[cur].add(n);r5()};
+$('#chk5').onclick=()=>{const q=REQ[cur],ok=[1,2,3,5],miss=q.filter(x=>!S[cur].has(x)),ex=[...S[cur]].filter(x=>!q.includes(x)&&!ok.includes(x));
+ $('#f5').innerHTML=!miss.length&&!ex.length?`<span class="ok">✓ Richtig für ${cur}.</span>`:`<span class="no">Noch nicht ganz: ${miss.length?'Es fehlen Zeilen. ':''}${ex.length?'Es sind Zeilen markiert, die hier nicht ausgeführt werden.':''}</span>`};
+$('#sol5').onclick=()=>{S[cur]=new Set(REQ[cur]);r5();$('#f5').innerHTML=`Zeilen ${REQ[cur].join(', ')} (Zeilen 1, 2, 3, 5 laufen bei jedem Aufruf ebenfalls durch). `+({A:'Vergleich &gt; wurzelinhalt trifft zu → rechter Teilbaum.',B:'neuerInhalt &lt; wurzelinhalt → linker Teilbaum.',C:'wie A: weiter im rechten Teilbaum.',D:'&lt; michel93 → Aufruf auf dem leeren linken Teilbaum, dort „baum leer“ → Zeile 4: der Baum wird mit mia89 gefüllt.'})[cur]};
+$('#clr5').onclick=()=>{S[cur]=new Set;$('#f5').textContent='';r5()};r5();
+
+/* 06 */
+const OP=['baum leer oder gesuchterInhalt == null','gesuchterInhalt < wurzelinhalt','gesuchterInhalt > wurzelinhalt','return null','linkerTeilbaum.suche(gesuchterInhalt)','rechterTeilbaum.suche(gesuchterInhalt)','return wurzelinhalt'];
+const SOL=[0,3,1,4,2,5,6];
+const sl=i=>`<select data-i="${i}"><option value="">– wählen –</option>${[3,6,1,4,0,5,2].map(j=>`<option value="${j}">${OP[j]}</option>`).join('')}</select>`;
+const br=(c,y,n)=>`<div class="br"><div class="cd">falls ${c} dann</div><div class="cols"><div class="col"><small>ja</small><br>${y}</div><div class="col"><small>nein</small><br>${n}</div></div></div>`;
+$('#sg').innerHTML=`<div class="hd">Inhalt suche (Inhalt gesuchterInhalt)</div>`+br(sl(0),sl(1),br(sl(2),sl(3),br(sl(4),sl(5),sl(6))));
+$('#chk6').onclick=()=>{let ok=0;document.querySelectorAll('#sg select').forEach(s=>{const g=s.value!==''&&+s.value===SOL[+s.dataset.i];ok+=g;s.style.borderColor=s.value===''?'':g?'var(--ok)':'var(--no)';s.style.borderWidth=s.value===''?'':'2px'});
+ $('#f6').innerHTML=ok===7?'<span class="ok">✓ Das Struktogramm ist vollständig und richtig.</span>':`<span class="no">${ok} von 7 Feldern richtig – rot markierte Felder prüfen.</span>`};
+$('#t6').innerHTML=draw(N(73,N(42,N(15,N(8),N(17)),N(46,N(45),N(50))),N(102,N(92,N(80),N(99)),N(113,N(106),N(151)))));
+const num=v=>parseFloat(String(v).replace(',','.'));
+$('#chk2').onclick=()=>{const r=[];
+ r.push($('#dep').value==3);r.push(num($('#b31').value)===5);r.push(num($('#b63').value)===6);
+ r.push([15.5,16].includes(num($('#l31').value)));r.push([31.5,32].includes(num($('#l63').value)));
+ $('#f2').innerHTML=r.every(Boolean)?'<span class="ok">✓ Alles richtig. Hinweis: Das AB rechnet mit n/2; exakt wäre (n+1)/2, beide Werte werden akzeptiert.</span>':`<span class="no">${r.filter(Boolean).length} von 5 Feldern richtig. Tipp: Der Suchbaum braucht höchstens Tiefe + 1 Schritte, die Liste im Mittel etwa n/2.</span>`};
+
+/* Tabs */
+const TB=[['s3','03 Löschen'],['s4','04 Erkennen'],['s5','05 Einfügen'],['s6','06 Suchen']];
+$('#tabs').innerHTML=TB.map(t=>`<button data-t="${t[0]}">${t[1]}</button>`).join('');
+function show(id){TB.forEach(t=>{$('#'+t[0]).classList.toggle('on',t[0]===id)});document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===id));try{history.replaceState(null,'','#'+id)}catch(e){}}
+$('#tabs').onclick=e=>{const b=e.target.closest('button');if(b)show(b.dataset.t)};
+show(TB.some(t=>t[0]===location.hash.slice(1))?location.hash.slice(1):'s3');
+</script></main></body></html>
